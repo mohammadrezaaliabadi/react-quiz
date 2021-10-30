@@ -1,0 +1,46 @@
+.choice {
+  display: flex;
+  justify-content: center;
+  align-content: center;
+  padding: 2rem;
+  border-radius: 0.3rem;
+  background: linear-gradient(145deg, #cacaca, #f0f0f0);
+  box-shadow: 25px 25px 50px #a1a1a1, -25px -25px 50px #ffffff;
+  cursor: pointer;
+
+  &:active {
+    animation: click-choice 1000ms;
+  }
+}
+
+@keyframes click-choice {
+  to {
+    box-shadow: 25px 25px 50px #a1a1a1, -25px -25px 50px #ffffff;
+  }
+  from {
+    box-shadow: 10px 10px 10px #a1a1a1, -10px -10px 10px #ffffff;
+  }
+}
+
+.answer {
+  border-radius: 0.3rem;
+  box-shadow: inset 7px 7px 22px #c7c7c7, inset -7px -7px 22px #f9f9f9;
+  border: none;
+  height: 200px;
+  transition: 300ms ease-in-out;
+  &:focus {
+    border: none;
+    outline: none;
+    box-shadow: inset 2px 2px 7px #c7c7c7, inset -2px -2px 7px #f9f9f9;
+  }
+}
+
+.me {
+  animation: expand 0.5s ease-in-out;
+}
+@keyframes expand {
+  from {
+    opacity: 0;
+    transform: scale(0) translateY(-10%);
+  }
+}
