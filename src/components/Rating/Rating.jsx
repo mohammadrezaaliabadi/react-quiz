@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import "./Rating.scss";
-const Rating = ({ n, a }) => {
+const Rating = ({ n, a, dispatchAnswer }) => {
   const [value, setValue] = useState(a.answer);
   const handleChange = async (e) => {
     const temp = Math.abs(
@@ -8,6 +8,7 @@ const Rating = ({ n, a }) => {
     );
     await setValue(temp);
     a.answer = await temp;
+    await dispatchAnswer({ type: "UPDATE_ANSWER" });
   };
   return (
     <span className="rating">

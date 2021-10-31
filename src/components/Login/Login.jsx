@@ -1,4 +1,5 @@
 import React from "react";
+import "./Login.scss";
 
 const Login = ({ setToken }) => {
   const handleSignUp = () => {
@@ -16,28 +17,26 @@ const Login = ({ setToken }) => {
           </p>
         </div>
         <div className="col-md-10 mx-auto col-lg-5">
-          <form className="p-4 p-md-5 border rounded-3 bg-light">
-            <div className="form-floating mb-3">
+          <form className="p-4 p-md-5 box">
+            <div className="mb-3 text-center">
               <input
                 type="email"
-                className="form-control"
+                className="input-text-my"
                 id="floatingInput"
-                placeholder="name@example.com"
+                placeholder="Email"
               />
-              <label htmlFor="floatingInput">Email address</label>
             </div>
-            <div className="form-floating mb-3">
+            <div className="mb-3 text-center">
               <input
                 type="password"
-                className="form-control"
+                className="input-text-my"
                 id="floatingPassword"
                 placeholder="Password"
               />
-              <label htmlFor="floatingPassword">Password</label>
             </div>
             <button
               onClick={handleSignUp}
-              className="w-100 btn btn-lg btn-primary"
+              className="w-100 btn-my"
               type="submit"
             >
               Sign up

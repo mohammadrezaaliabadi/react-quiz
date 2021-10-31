@@ -2,7 +2,7 @@ import React from "react";
 import { Link } from "react-router-dom";
 import Logo from "../../logo";
 
-export default () => (
+const Header = () => (
   <header className="d-flex flex-wrap align-items-center justify-content-center justify-content-md-between py-3 mb-4 border-bottom">
     <Link
       to="/"
@@ -11,14 +11,11 @@ export default () => (
     >
       <Logo />
     </Link>
-
     <div className="col-md-3 text-end">
-      <button type="button" className="btn btn-outline-primary me-2">
-        Login
-      </button>
-      <button type="button" className="btn btn-primary">
-        Sign-up
+      <button type="button" className="btn-my">
+        Logout
       </button>
     </div>
   </header>
 );
+export default Header;

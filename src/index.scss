@@ -1,0 +1,52 @@
+body {
+  margin: 0;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen",
+    "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue",
+    sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  background: #e0e0e0 !important;
+}
+
+code {
+  font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
+    monospace;
+}
+
+.btn-my {
+  padding: 0.4rem 0.6rem;
+  border-radius: 0.2rem;
+  background: linear-gradient(145deg, #cacaca, #f0f0f0);
+  box-shadow: 7px 7px 13px #bebebe, -7px -7px 13px #ffffff;
+  border: none;
+  &:active {
+    animation: click-btn 1s ease-in-out;
+  }
+}
+
+@keyframes click-btn {
+  to {
+    box-shadow: 7px 7px 13px #bebebe, -7px -7px 13px #ffffff;
+  }
+  from {
+    box-shadow: 3px 3px 7px #bebebe, -3px -3px 7px #ffffff;
+  }
+}
+
+.input-text-my {
+  border-radius: 0.3rem;
+  box-shadow: inset 7px 7px 22px #c7c7c7, inset -7px -7px 22px #f9f9f9;
+  border: none;
+  transition: 300ms ease-in-out;
+  &:focus {
+    border: none;
+    outline: none;
+    box-shadow: inset 2px 2px 7px #c7c7c7, inset -2px -2px 7px #f9f9f9;
+  }
+}
+
+.box {
+  border-radius: 6px;
+  background: #e0e0e0;
+  box-shadow: 24px 24px 47px #bebebe, -24px -24px 47px #ffffff;
+}

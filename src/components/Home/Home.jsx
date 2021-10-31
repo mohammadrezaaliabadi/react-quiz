@@ -1,13 +1,10 @@
 /* eslint-disable react-hooks/rules-of-hooks */
-import React, { useCallback, useState } from "react";
-import { Redirect } from "react-router-dom";
-import { DATA_ANSWER, DATA_QUESTION as DATA } from "../../data/data";
+import React, { useState } from "react";
+import { Link } from "react-router-dom";
+import { DATA_QUESTION as DATA } from "../../data/data";
 import Question from "../Question/Question";
 
-const Home = ({ authorized }) => {
-  if (!authorized) {
-    <Redirect to="/" />;
-  }
+const Home = () => {
   const [id, setId] = useState(1);
   const [index, setIndex] = useState(0);
   const [finishClassBtn, setFinishClassBtn] = useState("d-none");
@@ -31,7 +28,6 @@ const Home = ({ authorized }) => {
     const i = Math.min(DATA.length - 1, index + 1);
     setIndex(i);
     setId(DATA[i]["id"]);
-    console.log(i);
     updateAction(i);
   };
   const handlePrev = () => {
@@ -40,30 +36,24 @@ const Home = ({ authorized }) => {
     setId(DATA[i]["id"]);
     updateAction(i);
   };
+
   return (
-    <div className="m-5 gy-5 rounded">
+    <div className="m-3  gy-5 rounded">
       <div className="row justify-content-center">
         <Question id={id} />
       </div>
-      <div className="col-12 p-3 shadow d-grid gap-2 d-md-flex justify-content-star">
-        <button
-          className={`btn m-2 btn-primary ${prevClassBtn}`}
-          onClick={handlePrev}
-        >
+      <div className="col-12 p-3 box d-grid gap-2 d-md-flex justify-content-star">
+        <button className={`btn-my m-2 ${prevClassBtn}`} onClick={handlePrev}>
           Prev
         </button>
 
-        <button
-          className={`btn m-2 btn-primary ${nextClassBtn}`}
-          onClick={handleNext}
-        >
+        <button className={`btn-my m-2 ${nextClassBtn}`} onClick={handleNext}>
           Next
         </button>
-        <button
-          onClick={() => console.log(DATA_ANSWER)}
-          className={`btn m-2 btn-primary ${finishClassBtn}`}
-        >
-          Finish
+        <button className={`btn-my m-2 ${finishClassBtn}`}>
+          <Link className="text-black text-decoration-none" to="/result">
+            Finish
+          </Link>
         </button>
       </div>
     </div>

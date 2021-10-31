@@ -13,9 +13,13 @@ const Logo = () => (
     <metadata>
       Created by potrace 1.15, written by Peter Selinger 2001-2017
     </metadata>
+    <linearGradient x1="10%" y1="70.034%" x2="30%" y2="10.2%" id="a">
+      <stop offset="0%" stopColor="#e0e0e0" />
+      <stop stopOpacity={0.5} offset="100%" stopColor="#999" />
+    </linearGradient>
     <g
       transform="translate(0.000000,1280.000000) scale(0.100000,-0.100000)"
-      fill="#E36397"
+      fill="url(#a)"
       stroke="none"
     >
       <path d="M5465 12143 c-279 -18 -636 -74 -900 -140 -323 -81 -555 -165 -835 -304 -628 -312 -1087 -766 -1385 -1368 -183 -369 -293 -767 -352 -1276 -22 -188 -25 -913 -5 -1150 79 -939 285 -1560 689 -2080 138 -178 316 -354 673 -667 431 -377 595 -570 741 -871 136 -282 205 -597 225 -1019 l7 -148 838 0 839 0 -2 4513 -3 4512 -240 1 c-132 0 -262 -1 -290 -3z" />

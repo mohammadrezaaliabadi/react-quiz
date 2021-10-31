@@ -1,8 +1,12 @@
-import React from "react";
+import React, { useState } from "react";
 import "./Question.scss";
-const QuestionTest = ({ q, a }) => {
-  const handleChange = (e) => {
-    a.answer = Number.parseInt(e.target.getAttribute("data-value"));
+const QuestionTest = ({ q, a, dispatchAnswer }) => {
+  const [value, setValue] = useState(a.answer);
+  const handleChange = async (e) => {
+    const temp = Number.parseInt(e.target.getAttribute("data-value"));
+    await setValue(temp);
+    a.answer = await temp;
+    await dispatchAnswer({ type: "UPDATE_ANSWER" });
   };
   return (
     <>
@@ -19,9 +23,21 @@ const QuestionTest = ({ q, a }) => {
                 data-value={i + 1}
                 onChange={handleChange}
               />
-              <label htmlFor={`rate-${i}`} className="choice col-4 p-3 m-3">
-                {d}
-              </label>
+              {i + 1 === value ? (
+                <label
+                  htmlFor={`rate-${i}`}
+                  className="choice col-12 col-md-5 p-3 m-3"
+                >
+                  {d} <i class="bi bi-check-lg px-3 svg-shadow"></i>
+                </label>
+              ) : (
+                <label
+                  htmlFor={`rate-${i}`}
+                  className="choice col-12 col-md-5 p-3 m-3"
+                >
+                  {d}
+                </label>
+              )}
             </React.Fragment>
           );
         })}
