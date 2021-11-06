@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { ANSWER_ACTION_TYPE } from "../../reducer/AnswerReducer";
 import "./Question.scss";
 const QuestionTest = ({ q, a, dispatchAnswer }) => {
   const [value, setValue] = useState(a.answer);
@@ -6,7 +7,7 @@ const QuestionTest = ({ q, a, dispatchAnswer }) => {
     const temp = Number.parseInt(e.target.getAttribute("data-value"));
     await setValue(temp);
     a.answer = await temp;
-    await dispatchAnswer({ type: "UPDATE_ANSWER" });
+    await dispatchAnswer({ type: ANSWER_ACTION_TYPE.UPDATE_ANSWER });
   };
   return (
     <>

@@ -8,26 +8,22 @@ import Result from "../components/Result/Result";
 
 function App() {
   const { token, setToken } = useToken();
-  console.log(token);
-  if (!token) {
+  if (token == null) {
     return <Login setToken={setToken} />;
   }
   return (
     <div className="container">
       <BrowserRouter>
-        <Layout>
-          <Switch>
-            <Route exact path="/">
+        <Switch>
+          <Route exact path="/">
+            <Layout>
               <Home />
-            </Route>
-            <Route exact path="/login">
-              <Login />
-            </Route>
-            <Route exact path="/result">
-              <Result />
-            </Route>
-          </Switch>
-        </Layout>
+            </Layout>
+          </Route>
+          <Route path="/result">
+            <Result />
+          </Route>
+        </Switch>
       </BrowserRouter>
     </div>
   );

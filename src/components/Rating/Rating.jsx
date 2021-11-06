@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { ANSWER_ACTION_TYPE } from "../../reducer/AnswerReducer";
 import "./Rating.scss";
 const Rating = ({ n, a, dispatchAnswer }) => {
   const [value, setValue] = useState(a.answer);
@@ -8,7 +9,7 @@ const Rating = ({ n, a, dispatchAnswer }) => {
     );
     await setValue(temp);
     a.answer = await temp;
-    await dispatchAnswer({ type: "UPDATE_ANSWER" });
+    await dispatchAnswer({ type: ANSWER_ACTION_TYPE.UPDATE_ANSWER });
   };
   return (
     <span className="rating">

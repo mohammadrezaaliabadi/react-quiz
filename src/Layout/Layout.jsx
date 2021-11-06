@@ -2,7 +2,7 @@ import React, { useReducer } from "react";
 import Footer from "../components/Footer/Footer";
 import Header from "../components/Header/Header";
 import AnswerContext from "../context/AnswerContext";
-import { DATA_ANSWER } from "../data/data";
+import { DATA_ANSWER, DATA_QUESTION } from "../data/data";
 import AnswerReducer from "../reducer/AnswerReducer";
 
 const Layout = ({ children }) => {
@@ -11,7 +11,13 @@ const Layout = ({ children }) => {
     answers: answers || DATA_ANSWER,
   });
   return (
-    <AnswerContext.Provider value={{ answers: state.answers, dispatchAnswer }}>
+    <AnswerContext.Provider
+      value={{
+        duration: DATA_QUESTION.duration,
+        answers: state.answers,
+        dispatchAnswer,
+      }}
+    >
       <div className="row justify-content-center">
         <div className="col-12">
           <Header />

@@ -1,17 +1,23 @@
 /* eslint-disable react-hooks/rules-of-hooks */
-import React, { useState } from "react";
-import { Link } from "react-router-dom";
-import { DATA_QUESTION as DATA } from "../../data/data";
+import React, { useContext, useState } from "react";
+import AnswerContext from "../../context/AnswerContext";
+import { DATA_QUESTION } from "../../data/data";
+import { ANSWER_ACTION_TYPE } from "../../reducer/AnswerReducer";
 import Question from "../Question/Question";
 
 const Home = () => {
-  const [id, setId] = useState(1);
-  const [index, setIndex] = useState(0);
+  let { answers, dispatchAnswer } = useContext(AnswerContext);
+  function getIndex() {
+    return answers.index;
+  }
   const [finishClassBtn, setFinishClassBtn] = useState("d-none");
   const [nextClassBtn, setNextClassBtn] = useState("");
   const [prevClassBtn, setPrevClassBtn] = useState("");
+  const questions = DATA_QUESTION.questions;
+  const [id, setId] = useState(() => questions[getIndex()]["id"]);
+
   const updateAction = (i) => {
-    if (i + 1 === DATA.length) {
+    if (i + 1 === questions.length) {
       setFinishClassBtn("");
       setNextClassBtn("disabled");
     } else {
@@ -23,18 +29,22 @@ const Home = () => {
     } else {
       setPrevClassBtn("");
     }
+    answers.index = i;
+    dispatchAnswer({ type: ANSWER_ACTION_TYPE.UPDATE_ANSWER });
   };
   const handleNext = () => {
-    const i = Math.min(DATA.length - 1, index + 1);
-    setIndex(i);
-    setId(DATA[i]["id"]);
+    const i = Math.min(questions.length - 1, getIndex() + 1);
+    setId(questions[i]["id"]);
     updateAction(i);
   };
   const handlePrev = () => {
-    const i = Math.max(0, index - 1);
-    setIndex(i);
-    setId(DATA[i]["id"]);
+    const i = Math.max(0, getIndex() - 1);
+    setId(questions[i]["id"]);
     updateAction(i);
+  };
+  const handleFinish = () => {
+    answers.duration = 0;
+    answers.finish = true;
   };
 
   return (
@@ -42,18 +52,15 @@ const Home = () => {
       <div className="row justify-content-center">
         <Question id={id} />
       </div>
-      <div className="col-12 p-3 box d-grid gap-2 d-md-flex justify-content-star">
-        <button className={`btn-my m-2 ${prevClassBtn}`} onClick={handlePrev}>
+      <div className="p-4 m-5 box d-grid gap-2 d-md-flex justify-content-star">
+        <button className={`btn-my ${prevClassBtn}`} onClick={handlePrev}>
           Prev
         </button>
-
-        <button className={`btn-my m-2 ${nextClassBtn}`} onClick={handleNext}>
+        <button className={`btn-my ${nextClassBtn}`} onClick={handleNext}>
           Next
         </button>
-        <button className={`btn-my m-2 ${finishClassBtn}`}>
-          <Link className="text-black text-decoration-none" to="/result">
-            Finish
-          </Link>
+        <button className={`btn-my ${finishClassBtn}`} onClick={handleFinish}>
+          Finish
         </button>
       </div>
     </div>

@@ -1,15 +1,30 @@
-import React from "react";
+import React, { useState } from "react";
+import { useHistory } from "react-router";
+import Logo from "../../logo";
 import "./Login.scss";
 
 const Login = ({ setToken }) => {
-  const handleSignUp = () => {
-    setToken({ token: "123" });
+  const [email, setEmail] = useState();
+  const [name, setName] = useState();
+
+  const handleChangeEmail = (e) => {
+    setEmail(e.target.value);
   };
+
+  const handleChangeName = (e) => {
+    setName(e.target.value);
+  };
+  const handleSignUp = () => {
+    setToken({ token: { email, name } });
+  };
+
   return (
     <div className="container col-xl-10 col-xxl-8 px-4 py-5">
       <div className="row align-items-center g-lg-5 py-5">
         <div className="col-lg-7 text-center text-lg-start">
-          <h1 className="display-4 fw-bold lh-1 mb-3">It is quiz!</h1>
+          <h1 className="display-4 fw-bold lh-1 mb-3">
+            <Logo /> It is quiz!
+          </h1>
           <p className="col-lg-10 fs-4">
             Below is an example form built entirely with Bootstrap’s form
             controls. Each required form group has a validation state that can
@@ -24,14 +39,16 @@ const Login = ({ setToken }) => {
                 className="input-text-my"
                 id="floatingInput"
                 placeholder="Email"
+                onChange={handleChangeEmail}
               />
             </div>
             <div className="mb-3 text-center">
               <input
-                type="password"
+                type="text"
                 className="input-text-my"
-                id="floatingPassword"
-                placeholder="Password"
+                id="floatingText"
+                placeholder="Name"
+                onChange={handleChangeName}
               />
             </div>
             <button
@@ -39,7 +56,7 @@ const Login = ({ setToken }) => {
               className="w-100 btn-my"
               type="submit"
             >
-              Sign up
+              Start
             </button>
 
             <hr className="my-4" />

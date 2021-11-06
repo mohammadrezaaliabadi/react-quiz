@@ -1,4 +1,5 @@
 import React, { useCallback, useState } from "react";
+import { ANSWER_ACTION_TYPE } from "../../reducer/AnswerReducer";
 import "./Question.scss";
 const QuestionDescriptive = ({ q, a, dispatchAnswer }) => {
   const [value, setValue] = useState(a.answer);
@@ -6,7 +7,7 @@ const QuestionDescriptive = ({ q, a, dispatchAnswer }) => {
     async (e) => {
       a.answer = e.target.value;
       await setValue(a.answer);
-      await dispatchAnswer({ type: "UPDATE_ANSWER" });
+      await dispatchAnswer({ type: ANSWER_ACTION_TYPE.UPDATE_ANSWER });
     },
     [value]
   );

@@ -7,9 +7,9 @@ import { DATA_QUESTION } from "../../data/data";
 import AnswerContext from "../../context/AnswerContext";
 
 const Question = ({ id }) => {
-  const question = DATA_QUESTION.find((a) => a.id === id);
+  const question = DATA_QUESTION.questions.find((a) => a.id === id);
   const { answers, dispatchAnswer } = useContext(AnswerContext);
-  const answer = answers.find((a) => a.id === id);
+  const answer = answers.answers.find((a) => a.id === id);
   switch (question.type) {
     case QuestionType.Rating:
       return (

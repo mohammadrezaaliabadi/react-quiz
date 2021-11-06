@@ -1,0 +1,54 @@
+.progressme {
+  width: 5rem;
+  height: 5rem;
+  /* background: cornflowerblue; */
+  position: relative;
+}
+
+.progress__outer {
+  height: 100%;
+  width: 100%;
+  border-radius: 50%;
+  padding: 0.5rem;
+  box-shadow: 6px 6px 10px -1px rgba(0, 0, 0, 0.15),
+    -6px -6px 10px -1px rgba(255, 255, 255, 0.7);
+}
+
+.progress__inner {
+  height: 4rem;
+  width: 4rem;
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  box-shadow: inset 4px 4px 6px -1px rgba(0, 0, 0, 0.15),
+    inset -4px -4px 6px -1px rgba(255, 255, 255, 0.7),
+    -0.5px -0.5px 0px rgba(255, 255, 255, 1),
+    0.5px 0.5px 0px rgba(0, 0, 0, 0.15), 0px 12px 10px -10px rgba(0, 0, 0, 0.05);
+}
+
+.progress__number {
+  font-weight: 600;
+  color: #555;
+}
+
+.progress__circle {
+  fill: none;
+  stroke: url(#GradientColor);
+  stroke-width: 0.4rem;
+  stroke-dasharray: 472;
+  stroke-dashoffset: 472;
+}
+
+.progress__svg {
+  position: absolute;
+  top: 0;
+  left: 0;
+  transform: rotate(-90deg);
+}
+
+@keyframes anim {
+  100% {
+    stroke-dashoffset: 0;
+  }
+}
